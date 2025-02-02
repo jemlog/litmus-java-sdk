@@ -2,7 +2,6 @@ package io.litmuschaos;
 
 import com.google.gson.reflect.TypeToken;
 import com.jayway.jsonpath.TypeRef;
-import com.netflix.graphql.dgs.client.GraphQLResponse;
 import com.netflix.graphql.dgs.client.codegen.GraphQLQueryRequest;
 import io.litmuschaos.exception.LitmusApiException;
 import io.litmuschaos.generated.client.*;
@@ -281,391 +280,328 @@ public class LitmusClient implements AutoCloseable {
     }
 
     // Environment
-    public Environment getEnvironment(GetEnvironmentGraphQLQuery query, GetEnvironmentProjectionRoot projectionRoot){
+    public Environment getEnvironment(GetEnvironmentGraphQLQuery query, GetEnvironmentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_ENVIRONMENT, new TypeRef<Environment>(){});
+        return graphQLClient.query(request, GET_ENVIRONMENT, new TypeRef<Environment>(){});
     }
 
-    public ListEnvironmentResponse listEnvironments(ListEnvironmentsGraphQLQuery query, ListEnvironmentsProjectionRoot projectionRoot){
+    public ListEnvironmentResponse listEnvironments(ListEnvironmentsGraphQLQuery query, ListEnvironmentsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_ENVIRONMENTS, new TypeRef<ListEnvironmentResponse>(){});
+        return graphQLClient.query(request, LIST_ENVIRONMENTS, new TypeRef<ListEnvironmentResponse>(){});
     }
 
-    public Environment createEnvironment(CreateEnvironmentGraphQLQuery query, CreateEnvironmentProjectionRoot projectionRoot){
+    public Environment createEnvironment(CreateEnvironmentGraphQLQuery query, CreateEnvironmentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(CREATE_ENVIRONMENT, new TypeRef<Environment>(){});
+        return graphQLClient.query(request, CREATE_ENVIRONMENT, new TypeRef<Environment>(){});
     }
 
-    public DeleteEnvironmentResponse deleteEnvironment(DeleteEnvironmentGraphQLQuery query){
+    public DeleteEnvironmentResponse deleteEnvironment(DeleteEnvironmentGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_ENVIRONMENT, new TypeRef<DeleteEnvironmentResponse>(){});
+        return graphQLClient.query(request, DELETE_ENVIRONMENT, new TypeRef<DeleteEnvironmentResponse>(){});
     }
 
-    public UpdateEnvironmentResponse updateEnvironment(UpdateEnvironmentGraphQLQuery query){
+    public UpdateEnvironmentResponse updateEnvironment(UpdateEnvironmentGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_ENVIRONMENT, new TypeRef<UpdateEnvironmentResponse>(){});
+        return graphQLClient.query(request, UPDATE_ENVIRONMENT, new TypeRef<UpdateEnvironmentResponse>(){});
     }
 
     // Chaos Infrastructure
-    public Infra getInfra(GetInfraGraphQLQuery query, GetInfraProjectionRoot projectionRoot){
+    public Infra getInfra(GetInfraGraphQLQuery query, GetInfraProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_INFRA, new TypeRef<Infra>(){});
+        return graphQLClient.query(request, GET_INFRA, new TypeRef<Infra>(){});
     }
 
-    public ListInfraResponse listInfras(ListInfrasGraphQLQuery query, ListInfrasProjectionRoot projectionRoot) {
+    public ListInfraResponse listInfras(ListInfrasGraphQLQuery query, ListInfrasProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_INFRAS, new TypeRef<ListInfraResponse>() {});
+        return graphQLClient.query(request, LIST_INFRAS, new TypeRef<ListInfraResponse>(){});
     }
 
-    public Infra getInfraDetails(GetInfraDetailsGraphQLQuery query, GetInfraDetailsProjectionRoot projectionRoot){
+    public Infra getInfraDetails(GetInfraDetailsGraphQLQuery query, GetInfraDetailsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_INFRA_DETAILS, new TypeRef<Infra>(){});
+        return graphQLClient.query(request, GET_INFRA_DETAILS, new TypeRef<Infra>(){});
     }
 
-    public GetInfraStatsResponse getInfraStats(GetInfraStatsGraphQLQuery query, GetInfraStatsProjectionRoot projectionRoot){
+    public GetInfraStatsResponse getInfraStats(GetInfraStatsGraphQLQuery query, GetInfraStatsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_INFRA_STATS, new TypeRef<GetInfraStatsResponse>(){});
+        return graphQLClient.query(request, GET_INFRA_STATS, new TypeRef<GetInfraStatsResponse>(){});
     }
 
-    public GetInfraManifestResponse getInfraManifest(GetInfraManifestGraphQLQuery query){
+    public GetInfraManifestResponse getInfraManifest(GetInfraManifestGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_INFRA_MANIFEST, new TypeRef<GetInfraManifestResponse>(){});
+        return graphQLClient.query(request, GET_INFRA_MANIFEST, new TypeRef<GetInfraManifestResponse>(){});
     }
 
-    public ConfirmInfraRegistrationResponse confirmInfraRegistration(ConfirmInfraRegistrationGraphQLQuery query, ConfirmInfraRegistrationProjectionRoot projectionRoot){
+    public ConfirmInfraRegistrationResponse confirmInfraRegistration(ConfirmInfraRegistrationGraphQLQuery query, ConfirmInfraRegistrationProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(CONFIRM_INFRA_REGISTRATION, new TypeRef<ConfirmInfraRegistrationResponse>(){});
+        return graphQLClient.query(request, CONFIRM_INFRA_REGISTRATION, new TypeRef<ConfirmInfraRegistrationResponse>(){});
     }
 
-    public DeleteInfraResponse deleteInfra(DeleteInfraGraphQLQuery query){
+    public DeleteInfraResponse deleteInfra(DeleteInfraGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_INFRA, new TypeRef<DeleteInfraResponse>(){});
+        return graphQLClient.query(request, DELETE_INFRA, new TypeRef<DeleteInfraResponse>(){});
     }
 
-    public RegisterInfraResponse registerInfra(RegisterInfraGraphQLQuery query, RegisterInfraProjectionRoot projectionRoot){
+    public RegisterInfraResponse registerInfra(RegisterInfraGraphQLQuery query, RegisterInfraProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(REGISTER_INFRA, new TypeRef<RegisterInfraResponse>(){});
+        return graphQLClient.query(request, REGISTER_INFRA, new TypeRef<RegisterInfraResponse>(){});
     }
 
     // Chaos Hub
-    public List<ChaosHubStatus> listChaosHub(ListChaosHubGraphQLQuery query, ListChaosHubProjectionRoot projectionRoot){
+    public List<ChaosHubStatus> listChaosHub(ListChaosHubGraphQLQuery query, ListChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_CHAOS_HUB, new TypeRef<List<ChaosHubStatus>>(){});
+        return graphQLClient.query(request, LIST_CHAOS_HUB, new TypeRef<List<ChaosHubStatus>>(){});
     }
 
-    public ChaosHubStatus getChaosHub(GetChaosHubGraphQLQuery query, GetChaosHubProjectionRoot projectionRoot){
+    public ChaosHubStatus getChaosHub(GetChaosHubGraphQLQuery query, GetChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_CHAOS_HUB, new TypeRef<ChaosHubStatus>() {});
+        return graphQLClient.query(request, GET_CHAOS_HUB, new TypeRef<ChaosHubStatus>() {});
     }
 
-    public GetChaosHubStatsResponse getChaosHubStats(GetChaosHubStatsGraphQLQuery query, GetChaosHubStatsProjectionRoot projectionRoot){
+    public GetChaosHubStatsResponse getChaosHubStats(GetChaosHubStatsGraphQLQuery query, GetChaosHubStatsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_CHAOS_HUB_STATS, new TypeRef<GetChaosHubStatsResponse>() {});
+        return graphQLClient.query(request, GET_CHAOS_HUB_STATS, new TypeRef<GetChaosHubStatsResponse>() {});
     }
 
-    public ChaosHub addChaosHub(AddChaosHubGraphQLQuery query, AddChaosHubProjectionRoot projectionRoot){
+    public ChaosHub addChaosHub(AddChaosHubGraphQLQuery query, AddChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(ADD_CHAOS_HUB, new TypeRef<ChaosHub>(){});
+        return graphQLClient.query(request, ADD_CHAOS_HUB, new TypeRef<ChaosHub>() {});
     }
 
-    public ChaosHub addRemoteChaosHub(AddRemoteChaosHubGraphQLQuery query, AddRemoteChaosHubProjectionRoot projectionRoot){
+    public ChaosHub addRemoteChaosHub(AddRemoteChaosHubGraphQLQuery query, AddRemoteChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(ADD_REMOTE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
+        return graphQLClient.query(request, ADD_REMOTE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
     }
 
-    public DeleteChaosHubResponse deleteChaosHub(DeleteChaosHubGraphQLQuery query){
+    public DeleteChaosHubResponse deleteChaosHub(DeleteChaosHubGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_CHAOS_HUB, new TypeRef<DeleteChaosHubResponse>(){});
+        return graphQLClient.query(request, DELETE_CHAOS_HUB, new TypeRef<DeleteChaosHubResponse>(){});
     }
 
-    public ChaosHub saveChaosHub(SaveChaosHubGraphQLQuery query, SaveChaosHubProjectionRoot projectionRoot){
+    public ChaosHub saveChaosHub(SaveChaosHubGraphQLQuery query, SaveChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(SAVE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
+        return graphQLClient.query(request, SAVE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
     }
 
-    public SyncChaosHubResponse syncChaosHub(SyncChaosHubGraphQLQuery query){
+    public SyncChaosHubResponse syncChaosHub(SyncChaosHubGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(SYNC_CHAOS_HUB, new TypeRef<SyncChaosHubResponse>() {});
+        return graphQLClient.query(request, SYNC_CHAOS_HUB, new TypeRef<SyncChaosHubResponse>() {});
     }
 
-    public ChaosHub updateChaosHub(UpdateChaosHubGraphQLQuery query, UpdateChaosHubProjectionRoot projectionRoot){
+    public ChaosHub updateChaosHub(UpdateChaosHubGraphQLQuery query, UpdateChaosHubProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
+        return graphQLClient.query(request, UPDATE_CHAOS_HUB, new TypeRef<ChaosHub>() {});
     }
 
     // Chaos Experiment
-    public GetExperimentResponse getExperiment(GetExperimentGraphQLQuery query, GetExperimentProjectionRoot projectionRoot){
+    public GetExperimentResponse getExperiment(GetExperimentGraphQLQuery query, GetExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_EXPERIMENT, new TypeRef<GetExperimentResponse>(){});
+        return graphQLClient.query(request, GET_EXPERIMENT, new TypeRef<GetExperimentResponse>(){});
     }
 
-    public ListExperimentResponse listExperiment(ListExperimentGraphQLQuery query, ListExperimentProjectionRoot projectionRoot){
+    public ListExperimentResponse listExperiment(ListExperimentGraphQLQuery query, ListExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_EXPERIMENT, new TypeRef<ListExperimentResponse>(){});
+        return graphQLClient.query(request, LIST_EXPERIMENT, new TypeRef<ListExperimentResponse>(){});
     }
 
-    public GetExperimentStatsResponse getExperimentStats(GetExperimentStatsGraphQLQuery query, GetExperimentStatsProjectionRoot projectionRoot){
+    public GetExperimentStatsResponse getExperimentStats(GetExperimentStatsGraphQLQuery query, GetExperimentStatsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_EXPERIMENT_STATS, new TypeRef<GetExperimentStatsResponse>(){});
+        return graphQLClient.query(request, GET_EXPERIMENT_STATS, new TypeRef<GetExperimentStatsResponse>(){});
     }
 
-    public List<PredefinedExperimentList> getPredefinedExperiment(GetPredefinedExperimentGraphQLQuery query, GetPredefinedExperimentProjectionRoot projectionRoot){
+    public List<PredefinedExperimentList> getPredefinedExperiment(GetPredefinedExperimentGraphQLQuery query, GetPredefinedExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_PREDEFINED_EXPERIMENT, new TypeRef<List<PredefinedExperimentList>>(){});
+        return graphQLClient.query(request, GET_PREDEFINED_EXPERIMENT, new TypeRef<List<PredefinedExperimentList>>(){});
     }
 
-    public List<PredefinedExperimentList> listPredefinedExperiments(ListPredefinedExperimentsGraphQLQuery query, ListPredefinedExperimentsProjectionRoot projectionRoot){
+    public List<PredefinedExperimentList> listPredefinedExperiments(ListPredefinedExperimentsGraphQLQuery query, ListPredefinedExperimentsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_PREDEFINED_EXPERIMENTS, new TypeRef<List<PredefinedExperimentList>>(){});
+        return graphQLClient.query(request, LIST_PREDEFINED_EXPERIMENTS, new TypeRef<List<PredefinedExperimentList>>(){});
     }
 
-    public RunChaosExperimentResponse runChaosExperiment(RunChaosExperimentGraphQLQuery query, RunChaosExperimentProjectionRoot projectionRoot){
+    public RunChaosExperimentResponse runChaosExperiment(RunChaosExperimentGraphQLQuery query, RunChaosExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(RUN_CHAOS_EXPERIMENT, new TypeRef<RunChaosExperimentResponse>(){});
+        return graphQLClient.query(request, RUN_CHAOS_EXPERIMENT, new TypeRef<RunChaosExperimentResponse>(){});
     }
 
-    public SaveChaosExperimentResponse saveChaosExperiment(SaveChaosExperimentGraphQLQuery query){
+    public SaveChaosExperimentResponse saveChaosExperiment(SaveChaosExperimentGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(SAVE_CHAOS_EXPERIMENT, new TypeRef<SaveChaosExperimentResponse>(){});
+        return graphQLClient.query(request, SAVE_CHAOS_EXPERIMENT, new TypeRef<SaveChaosExperimentResponse>(){});
     }
 
-    public ChaosExperimentResponse updateChaosExperiment(UpdateChaosExperimentGraphQLQuery query, UpdateChaosExperimentProjectionRoot projectionRoot){
+    public ChaosExperimentResponse updateChaosExperiment(UpdateChaosExperimentGraphQLQuery query, UpdateChaosExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_CHAOS_EXPERIMENT, new TypeRef<ChaosExperimentResponse>(){});
+        return graphQLClient.query(request, UPDATE_CHAOS_EXPERIMENT, new TypeRef<ChaosExperimentResponse>(){});
     }
 
-    public ChaosExperimentResponse createChaosExperiment(CreateChaosExperimentGraphQLQuery query, CreateChaosExperimentProjectionRoot projectionRoot){
+    public ChaosExperimentResponse createChaosExperiment(CreateChaosExperimentGraphQLQuery query, CreateChaosExperimentProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(CREATE_CHAOS_EXPERIMENT, new TypeRef<ChaosExperimentResponse>(){});
+        return graphQLClient.query(request, CREATE_CHAOS_EXPERIMENT, new TypeRef<ChaosExperimentResponse>(){});
     }
 
-    public DeleteChaosExperimentResponse deleteChaosExperiment(DeleteChaosExperimentGraphQLQuery query){
+    public DeleteChaosExperimentResponse deleteChaosExperiment(DeleteChaosExperimentGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_CHAOS_EXPERIMENT, new TypeRef<DeleteChaosExperimentResponse>(){});
+        return graphQLClient.query(request, DELETE_CHAOS_EXPERIMENT, new TypeRef<DeleteChaosExperimentResponse>(){});
     }
 
-    public UpdateCronExperimentStateResponse updateCronExperimentState(UpdateCronExperimentStateGraphQLQuery query){
+    public UpdateCronExperimentStateResponse updateCronExperimentState(UpdateCronExperimentStateGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_CRON_EXPERIMENT_STATE, new TypeRef<UpdateCronExperimentStateResponse>(){});
+        return graphQLClient.query(request, UPDATE_CRON_EXPERIMENT_STATE, new TypeRef<UpdateCronExperimentStateResponse>(){});
     }
 
     // Chaos Experiment Run
-    public ExperimentRun getExperimentRun(GetExperimentRunGraphQLQuery query, GetExperimentRunProjectionRoot projectionRoot){
+    public ExperimentRun getExperimentRun(GetExperimentRunGraphQLQuery query, GetExperimentRunProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_EXPERIMENT_RUN, new TypeRef<ExperimentRun>(){});
+        return graphQLClient.query(request, GET_EXPERIMENT_RUN, new TypeRef<ExperimentRun>(){});
     }
 
-    public GetExperimentRunStatsResponse getExperimentRunStats(GetExperimentRunStatsGraphQLQuery query, GetExperimentRunStatsProjectionRoot projectionRoot){
+    public GetExperimentRunStatsResponse getExperimentRunStats(GetExperimentRunStatsGraphQLQuery query, GetExperimentRunStatsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_EXPERIMENT_RUN_STATS, new TypeRef<GetExperimentRunStatsResponse>(){});
+        return graphQLClient.query(request, GET_EXPERIMENT_RUN_STATS, new TypeRef<GetExperimentRunStatsResponse>(){});
     }
 
-    public ListExperimentRunResponse listExperimentRun(ListExperimentRunGraphQLQuery query, ListExperimentRunProjectionRoot projectionRoot){
+    public ListExperimentRunResponse listExperimentRun(ListExperimentRunGraphQLQuery query, ListExperimentRunProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_EXPERIMENT_RUN, new TypeRef<ListExperimentRunResponse>(){});
+        return graphQLClient.query(request, LIST_EXPERIMENT_RUN, new TypeRef<ListExperimentRunResponse>(){});
     }
 
-    public ChaosExperimentRunResponse chaosExperimentRun(ChaosExperimentRunGraphQLQuery query){
+    public ChaosExperimentRunResponse chaosExperimentRun(ChaosExperimentRunGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(CHAOS_EXPERIMENT_RUN, new TypeRef<ChaosExperimentRunResponse>(){});
+        return graphQLClient.query(request, CHAOS_EXPERIMENT_RUN, new TypeRef<ChaosExperimentRunResponse>(){});
     }
 
-    public StopExperimentRunsResponse stopExperimentRuns(StopExperimentRunsGraphQLQuery query){
+    public StopExperimentRunsResponse stopExperimentRuns(StopExperimentRunsGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(STOP_EXPERIMENT_RUNS, new TypeRef<StopExperimentRunsResponse>(){});
+        return graphQLClient.query(request, STOP_EXPERIMENT_RUNS, new TypeRef<StopExperimentRunsResponse>(){});
     }
 
     // GitOps
-    public GitConfigResponse getGitOpsDetails(GetGitOpsDetailsGraphQLQuery query, GetGitOpsDetailsProjectionRoot projectionRoot){
+    public GitConfigResponse getGitOpsDetails(GetGitOpsDetailsGraphQLQuery query, GetGitOpsDetailsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_GIT_OPS_DETAILS, new TypeRef<GitConfigResponse>(){});
+        return graphQLClient.query(request, GET_GIT_OPS_DETAILS, new TypeRef<GitConfigResponse>(){});
     }
 
-    public DisableGitOpsResponse disableGitOps(DisableGitOpsGraphQLQuery query){
+    public DisableGitOpsResponse disableGitOps(DisableGitOpsGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DISABLE_GIT_OPS, new TypeRef<DisableGitOpsResponse>(){});
+        return graphQLClient.query(request, DISABLE_GIT_OPS, new TypeRef<DisableGitOpsResponse>(){});
     }
 
-    public EnableGitOpsResponse enableGitOps(EnableGitOpsGraphQLQuery query){
+    public EnableGitOpsResponse enableGitOps(EnableGitOpsGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(ENABLE_GIT_OPS, new TypeRef<EnableGitOpsResponse>(){});
+        return graphQLClient.query(request, ENABLE_GIT_OPS, new TypeRef<EnableGitOpsResponse>(){});
     }
 
-    public GitOpsNotifierResponse gitopsNotifier(GitopsNotifierGraphQLQuery query){
+    public GitOpsNotifierResponse gitopsNotifier(GitopsNotifierGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GITOPS_NOTIFIER, new TypeRef<GitOpsNotifierResponse>(){});
+        return graphQLClient.query(request, GITOPS_NOTIFIER, new TypeRef<GitOpsNotifierResponse>(){});
     }
 
-    public UpdateGitOpsResponse updateGitOps(UpdateGitOpsGraphQLQuery query){
+    public UpdateGitOpsResponse updateGitOps(UpdateGitOpsGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_GIT_OPS, new TypeRef<UpdateGitOpsResponse>(){});
+        return graphQLClient.query(request, UPDATE_GIT_OPS, new TypeRef<UpdateGitOpsResponse>(){});
     }
 
     // Image Registry
-    public ImageRegistryResponse getImageRegistry(GetImageRegistryGraphQLQuery query, GetImageRegistryProjectionRoot projectionRoot){
+    public ImageRegistryResponse getImageRegistry(GetImageRegistryGraphQLQuery query, GetImageRegistryProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
+        return graphQLClient.query(request, GET_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
     }
 
-    public List<ImageRegistryResponse> listImageRegistry(ListImageRegistryGraphQLQuery query, ListImageRegistryProjectionRoot projectionRoot){
+    public List<ImageRegistryResponse> listImageRegistry(ListImageRegistryGraphQLQuery query, ListImageRegistryProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_IMAGE_REGISTRY, new TypeRef<List<ImageRegistryResponse>>(){});
+        return graphQLClient.query(request, LIST_IMAGE_REGISTRY, new TypeRef<List<ImageRegistryResponse>>(){});
     }
 
-    public ImageRegistryResponse createImageRegistry(CreateImageRegistryGraphQLQuery query, CreateImageRegistryProjectionRoot projectionRoot){
+    public ImageRegistryResponse createImageRegistry(CreateImageRegistryGraphQLQuery query, CreateImageRegistryProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(CREATE_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
+        return graphQLClient.query(request, CREATE_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
     }
 
-    public DeleteImageRegistryResponse deleteImageRegistry(DeleteImageRegistryGraphQLQuery query){
+    public DeleteImageRegistryResponse deleteImageRegistry(DeleteImageRegistryGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_IMAGE_REGISTRY, new TypeRef<DeleteImageRegistryResponse>(){});
+        return graphQLClient.query(request, DELETE_IMAGE_REGISTRY, new TypeRef<DeleteImageRegistryResponse>(){});
     }
 
-    public ImageRegistryResponse updateImageRegistry(UpdateImageRegistryGraphQLQuery query, UpdateImageRegistryProjectionRoot projectionRoot){
+    public ImageRegistryResponse updateImageRegistry(UpdateImageRegistryGraphQLQuery query, UpdateImageRegistryProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
+        return graphQLClient.query(request, UPDATE_IMAGE_REGISTRY, new TypeRef<ImageRegistryResponse>(){});
     }
 
     // Probe
-    public List<Probe> listProbes(ListProbesGraphQLQuery query, ListProbesProjectionRoot projectionRoot){
+    public List<Probe> listProbes(ListProbesGraphQLQuery query, ListProbesProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_PROBES, new TypeRef<List<Probe>>(){});
+        return graphQLClient.query(request, LIST_PROBES, new TypeRef<List<Probe>>(){});
     }
 
-    public Probe getProbe(GetProbeGraphQLQuery query, GetProbeProjectionRoot projectionRoot){
+    public Probe getProbe(GetProbeGraphQLQuery query, GetProbeProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_PROBE, new TypeRef<Probe>(){});
+        return graphQLClient.query(request, GET_PROBE, new TypeRef<Probe>(){});
     }
 
-    public ValidateUniqueProbeResponse validateUniqueProbe(ValidateUniqueProbeGraphQLQuery query){
+    public ValidateUniqueProbeResponse validateUniqueProbe(ValidateUniqueProbeGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(VALIDATE_UNIQUE_PROBE, new TypeRef<ValidateUniqueProbeResponse>(){});
+        return graphQLClient.query(request, VALIDATE_UNIQUE_PROBE, new TypeRef<ValidateUniqueProbeResponse>(){});
     }
 
-    public GetProbeReferenceResponse getProbeReference(GetProbeReferenceGraphQLQuery query, GetProbeReferenceProjectionRoot projectionRoot){
+    public GetProbeReferenceResponse getProbeReference(GetProbeReferenceGraphQLQuery query, GetProbeReferenceProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_PROBE_REFERENCE, new TypeRef<GetProbeReferenceResponse>(){});
+        return graphQLClient.query(request, GET_PROBE_REFERENCE, new TypeRef<GetProbeReferenceResponse>(){});
     }
 
-    public GetProbeYAMLResponse getProbeYAML(GetProbeYAMLGraphQLQuery query){
+    public GetProbeYAMLResponse getProbeYAML(GetProbeYAMLGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_PROBE_YAML, new TypeRef<GetProbeYAMLResponse>(){});
+        return graphQLClient.query(request, GET_PROBE_YAML, new TypeRef<GetProbeYAMLResponse>(){});
     }
 
-    public List<GetProbesInExperimentRunResponse> getProbesInExperimentRun(GetProbesInExperimentRunGraphQLQuery query, GetProbesInExperimentRunProjectionRoot projectionRoot){
+    public List<GetProbesInExperimentRunResponse> getProbesInExperimentRun(GetProbesInExperimentRunGraphQLQuery query, GetProbesInExperimentRunProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_PROBES_IN_EXPERIMENT_RUN, new TypeRef<List<GetProbesInExperimentRunResponse>>(){});
+        return graphQLClient.query(request, GET_PROBES_IN_EXPERIMENT_RUN, new TypeRef<List<GetProbesInExperimentRunResponse>>(){});
     }
 
-    public Probe addProbe(AddProbeGraphQLQuery query, AddProbeProjectionRoot projectionRoot){
+    public Probe addProbe(AddProbeGraphQLQuery query, AddProbeProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(ADD_PROBE, new TypeRef<Probe>(){});
+        return graphQLClient.query(request, ADD_PROBE, new TypeRef<Probe>(){});
     }
 
-    public DeleteProbeResponse deleteProbe(DeleteProbeGraphQLQuery query){
+    public DeleteProbeResponse deleteProbe(DeleteProbeGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(DELETE_PROBE, new TypeRef<DeleteProbeResponse>(){});
+        return graphQLClient.query(request, DELETE_PROBE, new TypeRef<DeleteProbeResponse>(){});
     }
 
-    public UpdateProbeResponse updateProbe(UpdateProbeGraphQLQuery query){
+    public UpdateProbeResponse updateProbe(UpdateProbeGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(UPDATE_PROBE, new TypeRef<UpdateProbeResponse>(){});
+        return graphQLClient.query(request, UPDATE_PROBE, new TypeRef<UpdateProbeResponse>(){});
     }
 
     // chaos fault
-    public FaultDetails getChaosFault(GetChaosFaultGraphQLQuery query, GetChaosFaultProjectionRoot projectionRoot){
+    public FaultDetails getChaosFault(GetChaosFaultGraphQLQuery query, GetChaosFaultProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_CHAOS_FAULT, new TypeRef<FaultDetails>(){});
+        return graphQLClient.query(request, GET_CHAOS_FAULT, new TypeRef<FaultDetails>(){});
     }
 
-    public List<Chart> listChaosFaults(ListChaosFaultsGraphQLQuery query, ListChaosFaultsProjectionRoot projectionRoot){
+    public List<Chart> listChaosFaults(ListChaosFaultsGraphQLQuery query, ListChaosFaultsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(LIST_CHAOS_FAULTS, new TypeRef<List<Chart>>(){});
+        return graphQLClient.query(request, LIST_CHAOS_FAULTS, new TypeRef<List<Chart>>(){});
     }
 
     // others
-    public ServerVersionResponse getServerVersion(GetServerVersionGraphQLQuery query, GetServerVersionProjectionRoot projectionRoot){
+    public ServerVersionResponse getServerVersion(GetServerVersionGraphQLQuery query, GetServerVersionProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_SERVER_VERSION, new TypeRef<ServerVersionResponse>(){});
+        return graphQLClient.query(request, GET_SERVER_VERSION, new TypeRef<ServerVersionResponse>(){});
     }
 
-    public InfraVersionDetails getVersionDetails(GetVersionDetailsGraphQLQuery query, GetVersionDetailsProjectionRoot projectionRoot){
+    public InfraVersionDetails getVersionDetails(GetVersionDetailsGraphQLQuery query, GetVersionDetailsProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_VERSION_DETAILS, new TypeRef<InfraVersionDetails>(){});
+        return graphQLClient.query(request, GET_VERSION_DETAILS, new TypeRef<InfraVersionDetails>(){});
     }
 
-    public SSHKey generateSSHKey(GenerateSSHKeyGraphQLQuery query, GenerateSSHKeyProjectionRoot projectionRoot){
+    public SSHKey generateSSHKey(GenerateSSHKeyGraphQLQuery query, GenerateSSHKeyProjectionRoot projectionRoot) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query, projectionRoot).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GENERATE_SSH_KEY, new TypeRef<SSHKey>(){});
+        return graphQLClient.query(request, GENERATE_SSH_KEY, new TypeRef<SSHKey>(){});
     }
 
-    public GetManifestWithInfraIDResponse getManifestWithInfraID(GetManifestWithInfraIDGraphQLQuery query){
+    public GetManifestWithInfraIDResponse getManifestWithInfraID(GetManifestWithInfraIDGraphQLQuery query) throws LitmusApiException {
         String request = new GraphQLQueryRequest(query).serialize();
-        GraphQLResponse response = graphQLClient.query(request);
-        return response.extractValueAsObject(GET_MANIFEST_WITH_INFRA_ID, new TypeRef<GetManifestWithInfraIDResponse>(){});
+        return graphQLClient.query(request, GET_MANIFEST_WITH_INFRA_ID, new TypeRef<GetManifestWithInfraIDResponse>(){});
     }
 
     // subscription is not supported in current version
